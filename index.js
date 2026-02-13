@@ -16,17 +16,20 @@ const button2 = document.getElementById('button2')
 button1.addEventListener("click", function() {
   let emptyErrorMsg = 'userInput1 must input Pokemon name';
   const inputValue = userInput1.value.trim()
-  userInput1.value.toString() == '' ? alert(emptyErrorMsg) : new apiCall(pokeURL, inputValue)});
+  userInput1.value.toString() == '' ? alert(emptyErrorMsg) : getPokemon(inputValue)
+});
 
   // returns console mesage if empy, returns userInput2.value
 button2.addEventListener("click", function() {
   const emptyErrorMsg = 'userInput2 must input Pokemon name';
   const inputValue = userInput2.value.trim()
-  userInput2.value.toString() == '' ? alert(emptyErrorMsg) : inputValue});
+  userInput2.value.toString() == '' ? alert(emptyErrorMsg) : getPokemon(inputValue)
+});
 
+// GLOBAL FUNCTIONS
+const getPokemon = (input) => {
+  let newCall = new pokeAPICall(input);
+  newCall.getPokemonByName()
+};
 
-let test = new pokeAPICall('bulbasaur').getPokemonByName()
-console.log(test)
-
-
-
+// TESTS

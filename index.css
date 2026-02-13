@@ -21,7 +21,9 @@ h1 {
 .displays {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px
+  gap: 2px;
+  background-color: black;
+  height: 750px;
 }
 
 .input {
@@ -33,9 +35,11 @@ h1 {
 }
 
 .display1 {
-
+  background-image: radial-gradient(circle at center, #DBBE18, rgba(255, 0, 0, 0.267));
+  padding: 1em;
 }
 
 .display2 {
-
+  background-image: radial-gradient(circle at center, #0313f8a4, rgba(255, 0, 0, 0.267));
+  padding: 1em;
 }
