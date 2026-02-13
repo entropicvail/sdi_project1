@@ -24,12 +24,18 @@ h1 {
   gap: 20px
 }
 
-.display1 {
+.input {
   display: grid;
-  place-items: center;
+  padding-left: 25%;
+  padding-right: 25%;
+  grid-template-columns: minmax(50px, 150px) minmax(60px, 75px);
+  gap: 20px;
+}
+
+.display1 {
+
 }
 
 .display2 {
-  display: grid;
-  place-items: center;
+
 }

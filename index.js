@@ -14,12 +14,31 @@ const button2 = document.getElementById('button2')
 // GLOBAL LISTENERS
 // returns console mesage if empy, returns userInput1.value
 button1.addEventListener("click", function() {
-  userInput1.value.toString() == '' ? console.log('must input Pokemon name') : userInput1.value.trim()});
+  let emptyErrorMsg = 'userInput1 must input Pokemon name';
+  const inputValue = userInput1.value.trim()
+  userInput1.value.toString() == '' ? alert(emptyErrorMsg) : inputValue});
+
   // returns console mesage if empy, returns userInput2.value
 button2.addEventListener("click", function() {
-  userInput2.value.toString() == '' ? console.log('must input Pokemon name') : userInput2.value.trim()});
+  const emptyErrorMsg = 'userInput2 must input Pokemon name';
+  const inputValue = userInput2.value.trim()
+  userInput2.value.toString() == '' ? alert(emptyErrorMsg) : inputValue});
 
-// GLOBAL FUNCTIONS
+// GLOBAL CLASSES
+class apiCall {
+  constructor(url, searchDepth) {
+    this.url = url;
+    this.searchDepth = searchDepth;
+  }
+
+  getAPIData() {
+    fetch(`${this.url}/${searchDepth}`)
+    .then(data => data.json())
+    .then(output => console.log(output))
+  }
+}
+
+  // GLOBAL FUNCTIONS
 
 function displayList(pokemans){
   // console.log(pokemans[0])
@@ -38,11 +57,11 @@ function displayList(pokemans){
   }
 }
 
-// API CALLS
-fetch(`https://pokeapi.co/api/v2/pokemon`)
-  .then(res => res.json())
-  .then(data => pokeList = data.results)
-  .then(() => {
-    // console.log(pokeList)
-    displayList(pokeList)
-  })
+// // API CALLS
+// fetch(`https://pokeapi.co/api/v2/pokemon`)
+//   .then(res => res.json())
+//   .then(data => pokeList = data.results)
+//   .then(() => {
+//     // console.log(pokeList)
+//     displayList(pokeList)
+//   })
