@@ -43,3 +43,9 @@ h1 {
   background-image: radial-gradient(circle at center, #0313f8a4, rgba(255, 0, 0, 0.267));
   padding: 1em;
 }
+
+.todo {
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+}
