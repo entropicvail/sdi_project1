@@ -1,6 +1,6 @@
 # Poke Check
 
-Static page that displays information from https://pokeapi.co/ based on user search.
+Static page that displays information from https://pokeapi.co/ based on user search in two side-by-side display fields for comparison..
 
 ## This Page Should
 - have two working search box with a submit button that allows a user to search for Pokemon by name

@@ -1,0 +1,35 @@
+body {
+  background-color: gray;
+}
+
+h1 {
+  background-color: gold;
+  text-align: center;
+  font-size: 48px;
+  font-family: serif;
+  border-style: groove;
+  border-color: #DBBE18;
+
+    .headImag {
+    background-image: url("./img/Toxtricity-PNG.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    height: 720px;
+  }
+}
+
+.displays {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px
+}
+
+.display1 {
+  display: grid;
+  place-items: center;
+}
+
+.display2 {
+  display: grid;
+  place-items: center;
+}
