@@ -31,3 +31,6 @@ npm i live-server
 live-server
 ```
 9. Open a web browser and navigate to the page displayed.
+
+## Testing
+Run live-server to server the application up and enter a Pokémon name into the field, hit the corresponding search button and look for results to populate onscreen. If they do not, open developer-mode in the browser and view console for error messages.

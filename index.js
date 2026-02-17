@@ -1,10 +1,5 @@
 // import { apiCall, pokeAPICall } from './src/classes.js'
 
-// GLOBAL VARIABLS
-let pokeList1 = {};
-let pokeList2 = {};
-let list = document.querySelector("#pokelist");
-
 // GLOBAL ELEMENTS
 const userInput1 = document.getElementById('name1');
 const button1 = document.getElementById('button1');
@@ -13,6 +8,21 @@ const Img1 = document.getElementById('img1');
 const userInput2 = document.getElementById('name2');
 const button2 = document.getElementById('button2');
 const Img2 = document.getElementById('img2');
+
+// GLOBAL LISTENERS
+// returns console mesage if empy, returns userInput1.value
+button1.addEventListener("click", function() {
+  let emptyErrorMsg = 'userInput1 must input Pokemon name';
+  const inputValue = userInput1.value.trim()
+  userInput1.value.toString() == '' ? alert(emptyErrorMsg) : getPokemon(inputValue, 1)
+});
+
+  // returns console mesage if empy, returns userInput2.value
+button2.addEventListener("click", function() {
+  const emptyErrorMsg = 'userInput2 must input Pokemon name';
+  const inputValue = userInput2.value.trim()
+  userInput2.value.toString() == '' ? alert(emptyErrorMsg) : getPokemon(inputValue, 2)
+});
 
 // GLOBAL CLASSES
 
@@ -42,28 +52,15 @@ const Img2 = document.getElementById('img2');
     };
   };
 
-// GLOBAL LISTENERS
-// returns console mesage if empy, returns userInput1.value
-button1.addEventListener("click", function() {
-  let emptyErrorMsg = 'userInput1 must input Pokemon name';
-  const inputValue = userInput1.value.trim()
-  userInput1.value.toString() == '' ? alert(emptyErrorMsg) : getPokemon(inputValue, 1)
-});
-
-  // returns console mesage if empy, returns userInput2.value
-button2.addEventListener("click", function() {
-  const emptyErrorMsg = 'userInput2 must input Pokemon name';
-  const inputValue = userInput2.value.trim()
-  userInput2.value.toString() == '' ? alert(emptyErrorMsg) : getPokemon(inputValue, 2)
-});
-
 // GLOBAL FUNCTIONS
+// fetches pokemon data from the API
 const getPokemon = (input, disp) => {
   clearInput(`name${disp}`);
   const newCall = new pokeAPICall(input, disp);
   newCall.getPokemonByName();
 };
 
+// formats fetched data into a table and returns it
 const buildPokemonDisp = (pokeObj) => {
   const pokemonName = pokeObj.name;
   let pokemonTypes = [];
@@ -105,6 +102,8 @@ const buildPokemonDisp = (pokeObj) => {
   return dispTable
 };
 
+
+// creates elements passed in from param and looks at which display was used for search
 const displayPokeData = (tableData, disp) => {
   const pushStat1 = () => document.getElementById('stats1').innerHTML = tableData;
   const pushStat2 = () => document.getElementById('stats2').innerHTML = tableData;
@@ -117,7 +116,7 @@ const displayPokeData = (tableData, disp) => {
   }
 };
 
-// Clear input field
+// clears input field passed in from parameter
 const clearInput = (input) => {
   const inputElement = document.getElementById(input);
   inputElement.value = '';
@@ -149,11 +148,4 @@ async function fetchAndDisplayImage(url, disp) {
   } catch (error) {
     console.error('Error fetching image:', error);
   }
-}
-
-//hide alt while waiting for image
-const hideAlt = (elem) => {
-  var alt = document.createTextNode( elem.getAttribute('alt') );
-  elem.parentNode.insertBefore( alt, elem );
-  elem.parentNode.removeChild( elem );
 }
