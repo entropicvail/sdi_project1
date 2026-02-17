@@ -17,10 +17,11 @@
     getPokemonByName() {
       fetch(`${this.pokeURL}/${this.inputValue}`)
       .then(data => data.json())
-      .then(out => {
-        console.log(out)
-      })
+      .then(out => pokeList.push(out))
+      // .then(out => {
+      //   console.log(out)
+      // })
     }
   }
 
-  export { apiCall, pokeAPICall }
+  // export { apiCall, pokeAPICall }
