@@ -1,13 +1,13 @@
-# Poke Check
+# Poké Check
 
-Static page that displays information from https://pokeapi.co/ based on user search in two side-by-side display fields for comparison..
+Static page that displays information from the https://pokeapi.co/ API and images from https://img.pokemondb.net/ based on user input. Results are displayed in side-by-side display fields for comparison; this allows you to quickly compare basic stats of two Pokémon.
 
 ## This Page Should
-- have two working search box with a submit button that allows a user to search for Pokemon by name
+- have two working search boxes with a submit button for each that allows a user to search for Pokémon by name
 - use event handlers for user interaction
-- have an organized display-field on the left and right side of the page for comparing different Pokemon
-- use css styling to make the page less ugly
-- contain this exact README.md file
+- have an organized display-field on the left and right side of the page for comparing different Pokémon
+- use css styling to make the page slightly less ugly
+- contain this README.md file
 
 ## Setup Instructions
 1. Open a terminal.
