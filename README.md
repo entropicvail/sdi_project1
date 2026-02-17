@@ -14,20 +14,20 @@ Static page that displays information from https://pokeapi.co/ based on user sea
 2. Clone this repo.
 3. Navigate into the cloned repo driectory.
 4. Download and install nodeJS from https://nodejs.org/en/download
-- Ensure npm is installed and up to date (at least 22).
+5. Ensure npm is installed and up to date (at least 22).
 ```
 npm -v
 ```
-5. Install dependancies.
+6. Install dependancies.
 ```
 npm i -y
 ```
-6. Insatll live-server.
+7. Insatll live-server.
 ```
 npm i live-server
 ```
-7. From inside the cloned directory, start live server.
+8. From inside the cloned directory, start live server.
 ```
 live-server
 ```
-8. Open a web browser and navigate to the page displayed.
+9. Open a web browser and navigate to the page displayed.
