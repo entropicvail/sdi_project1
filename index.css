@@ -23,7 +23,7 @@ h1 {
   grid-template-columns: 1fr 1fr;
   gap: 2px;
   background-color: black;
-  height: 750px;
+  height: 100%;
 }
 
 .input {
@@ -63,4 +63,10 @@ th, td {
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 10px;
+}
+
+.pokemonimg {
+  margin-top: 25px;
+  border-radius: 28px;
+  box-shadow: 10px 10px 5px 10px rgba(0, 0, 0, 0.5);
 }

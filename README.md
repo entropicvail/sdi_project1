@@ -10,24 +10,24 @@ Static page that displays information from https://pokeapi.co/ based on user sea
 - contain this exact README.md file
 
 ## Setup Instructions
-- Open a terminal.
-- Clone this repo.
-- Navigate into the cloned repo driectory.
-- Download and install nodeJS from https://nodejs.org/en/download
+1. Open a terminal.
+2. Clone this repo.
+3. Navigate into the cloned repo driectory.
+4. Download and install nodeJS from https://nodejs.org/en/download
 - Ensure npm is installed and up to date (at least 22).
 ```
 npm -v
 ```
-- Install dependancies.
+5. Install dependancies.
 ```
 npm i -y
 ```
-- Insatll live-server.
+6. Insatll live-server.
 ```
 npm i live-server
 ```
-- From inside the cloned directory, start live server.
+7. From inside the cloned directory, start live server.
 ```
 live-server
 ```
-- Open a web browser and navigate to the page displayed.
+8. Open a web browser and navigate to the page displayed.

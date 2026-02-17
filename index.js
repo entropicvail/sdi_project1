@@ -8,9 +8,11 @@ let list = document.querySelector("#pokelist");
 // GLOBAL ELEMENTS
 const userInput1 = document.getElementById('name1');
 const button1 = document.getElementById('button1');
+const Img1 = document.getElementById('img1');
 
 const userInput2 = document.getElementById('name2');
 const button2 = document.getElementById('button2');
+const Img2 = document.getElementById('img2');
 
 // GLOBAL CLASSES
 
@@ -26,14 +28,17 @@ const button2 = document.getElementById('button2');
       this.disp = disp;
       this.inputValue = inputValue;
       this.pokeURL = 'https://pokeapi.co/api/v2/pokemon';
+      this.pokeImgURL = 'https://cors-anywhere.com/https://img.pokemondb.net/artwork/avif'
       this.pokemon = {};
     };
 
     getPokemonByName() {
+      let url = `${this.pokeImgURL}/${this.inputValue}.avif`
       fetch(`${this.pokeURL}/${this.inputValue}`)
       .then(data => data.json())
       .then(statList => buildPokemonDisp(statList))
       .then(stats => displayPokeData(stats, this.disp))
+      fetchAndDisplayImage(url, this.disp)
     };
   };
 
@@ -116,4 +121,39 @@ const displayPokeData = (tableData, disp) => {
 const clearInput = (input) => {
   const inputElement = document.getElementById(input);
   inputElement.value = '';
+}
+
+// async function to fetch and display image of pokemon submitted from input field
+async function fetchAndDisplayImage(url, disp) {
+  let displayUsed;
+
+  if ( disp < 1 || disp > 2 ) {
+    console.log(`Incorrect display referenced, call must be 1 or two. Called was: ${disp}`)
+  } else if ( disp == 1 ) {
+    displayUsed = img1;
+  } else if ( disp ==2 ) {
+    displayUsed = img2;
+  }
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const imageBlob = await response.blob();
+    const objectUrl = URL.createObjectURL(imageBlob);
+
+    displayUsed.src = objectUrl;
+
+  } catch (error) {
+    console.error('Error fetching image:', error);
+  }
+}
+
+//hide alt while waiting for image
+const hideAlt = (elem) => {
+  var alt = document.createTextNode( elem.getAttribute('alt') );
+  elem.parentNode.insertBefore( alt, elem );
+  elem.parentNode.removeChild( elem );
 }
