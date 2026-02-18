@@ -37,7 +37,7 @@ h2 {
 .displays {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
+  gap: 7px;
   background-color: black;
   height: 100%;
 }
