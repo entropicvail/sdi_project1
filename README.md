@@ -1,6 +1,6 @@
 # Poké Check
 
-Static page that displays information from the https://pokeapi.co/ API and images from https://img.pokemondb.net/ based on user input. Results are displayed in side-by-side display fields for comparison; this allows you to quickly compare basic stats of two Pokémon.
+Static page that displays information from the https://pokeapi.co/ API and images from https://img.pokemondb.net/ based on user input. Results are displayed in side-by-side display fields for comparison; this allows you to quickly compare basic stats of two Pokémon. ~ To function, this program requires an active internet connection.
 
 ## This Page Should
 - have two working search boxes with a submit button for each that allows a user to search for Pokémon by name
