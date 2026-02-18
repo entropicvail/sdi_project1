@@ -170,13 +170,13 @@ const displayPokeData = (tableData, disp) => {
     const heading = document.getElementById('head1');
     const name = document.getElementById('nameID1').textContent;
     const Name = capFirstLetter(name);
-    heading.textContent = `Poke Slot 1 ~ ${Name}`;
+    heading.textContent = `~ ${Name}`;
   } else if ( disp == 2 ) {
     pushStat2();
     const heading = document.getElementById('head2');
     const name = document.getElementById('nameID2').textContent;
     const Name = capFirstLetter(name);
-    heading.textContent = `Poke Slot 2 ~ ${Name}`;
+    heading.textContent = `~ ${Name}`;
   }
 };
 
