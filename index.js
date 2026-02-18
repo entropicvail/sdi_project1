@@ -1,15 +1,10 @@
-  // GLOBAL ELEMENTS/VARIABLES
+  /* GLOBAL ELEMENTS/VARIABLES */
+
 const userInput1 = document.getElementById('name1');
-const button1 = document.getElementById('button1');
-const Img1 = document.getElementById('img1');
-
 const userInput2 = document.getElementById('name2');
-const button2 = document.getElementById('button2');
-const Img2 = document.getElementById('img2');
 
-const button3 = document.getElementById('button3');
+  /* GLOBAL LISTENERS */
 
-  // GLOBAL LISTENERS
 // returns console mesage if empy, returns userInput1.value
 button1.addEventListener("click", function() {
   let emptyErrorMsg = 'userInput1 must input Pokemon name';
@@ -62,7 +57,7 @@ window.onclick = function(event) {
   }
 }
 
-  // GLOBAL CLASSES
+  /* GLOBAL CLASSES */
 
   class apiCall {
     constructor(inputValue) {
@@ -84,7 +79,7 @@ window.onclick = function(event) {
       let url = `${this.pokeImgURL}/${this.inputValue}.avif`
       fetch(`${this.pokeURL}/${this.inputValue}`)
       .then(data => data.json())
-      .then(statList => buildPokemonDisp(statList))
+      .then(statList => buildPokemonDisp(statList, this.disp))
       .then(stats => displayPokeData(stats, this.disp))
       fetchAndDisplayImage(url, this.disp)
     };
@@ -106,7 +101,7 @@ window.onclick = function(event) {
     }
   };
 
-  // GLOBAL FUNCTIONS
+  /* GLOBAL FUNCTIONS */
 
 // fetches pokemon data from the API
 const getPokemon = (input, disp) => {
@@ -116,7 +111,7 @@ const getPokemon = (input, disp) => {
 };
 
 // formats fetched data into a table and returns it
-const buildPokemonDisp = (pokeObj) => {
+const buildPokemonDisp = (pokeObj, disp) => {
   const pokemonName = pokeObj.name;
   let pokemonTypes = [];
   let pokemonAbilities = [];
@@ -130,7 +125,7 @@ const buildPokemonDisp = (pokeObj) => {
     <table>
         <tr>
           <th>Name</th>
-          <td>${pokemonName}</td>
+          <td id='nameID${disp}'>${pokemonName}</td>
         </tr>
         <tr>
           <th>Types</th>
@@ -172,8 +167,16 @@ const displayPokeData = (tableData, disp) => {
     console.log(`Incorrect display referenced, call must be 1 or two. Called was: ${disp}`)
   } else if ( disp == 1 ) {
     pushStat1();
+    const heading = document.getElementById('head1');
+    const name = document.getElementById('nameID1').textContent;
+    const Name = capFirstLetter(name);
+    heading.textContent = `Poke Slot 1 ~ ${Name}`;
   } else if ( disp == 2 ) {
     pushStat2();
+    const heading = document.getElementById('head2');
+    const name = document.getElementById('nameID2').textContent;
+    const Name = capFirstLetter(name);
+    heading.textContent = `Poke Slot 2 ~ ${Name}`;
   }
 };
 
@@ -232,3 +235,8 @@ const displayAllPoke2 = (data) => {
   listContainer.innerHTML = output;
 };
 
+// capitalizes first letter of string passed in as parameter
+const capFirstLetter = (string) => {
+  if (!string) return string;
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
