@@ -1,4 +1,4 @@
-// GLOBAL ELEMENTS
+  // GLOBAL ELEMENTS/VARIABLES
 const userInput1 = document.getElementById('name1');
 const button1 = document.getElementById('button1');
 const Img1 = document.getElementById('img1');
@@ -9,7 +9,7 @@ const Img2 = document.getElementById('img2');
 
 const button3 = document.getElementById('button3');
 
-// GLOBAL LISTENERS
+  // GLOBAL LISTENERS
 // returns console mesage if empy, returns userInput1.value
 button1.addEventListener("click", function() {
   let emptyErrorMsg = 'userInput1 must input Pokemon name';
@@ -17,41 +17,52 @@ button1.addEventListener("click", function() {
   userInput1.value.toString() == '' ? alert(emptyErrorMsg) : getPokemon(inputValue, 1)
 });
 
-  // returns console mesage if empy, returns userInput2.value
+// returns console mesage if empy, returns userInput2.value
 button2.addEventListener("click", function() {
   const emptyErrorMsg = 'userInput2 must input Pokemon name';
   const inputValue = userInput2.value.trim()
   userInput2.value.toString() == '' ? alert(emptyErrorMsg) : getPokemon(inputValue, 2)
 });
 
+// gets list of all pokemon and displays as drop-down for selection in input1
 button3.addEventListener("click", function() {
   document.getElementById("allPokeList1").classList.toggle("show");
   const getPokemonList = new pokeAPICall;
   getPokemonList.getAllPokemon1();
 });
 
+// gets list of all pokemon and displays as drop-down for selection in input2
 button4.addEventListener("click", function() {
   document.getElementById("allPokeList2").classList.toggle("show");
   const getPokemonList = new pokeAPICall;
   getPokemonList.getAllPokemon2();
 });
 
+// listens for selection from dropdown-list allPokeList1
 document.getElementById("allPokeList1").addEventListener("click", (event) => {
   document.getElementById('name1').value = event.target.id
-  console.log(event.target.id);
 });
 
+// listens for selection from dropdown-list allPokeList2
 document.getElementById("allPokeList2").addEventListener("click", (event) => {
   document.getElementById('name2').value = event.target.id
-  console.log(event.target.id);
 });
 
-// button3.addEventListener("click", function() {
-//   const getPokemonList = new pokeAPICall;
-//   getPokemonList.getAllPokemon();
-// });
+// closes the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 
-// GLOBAL CLASSES
+  // GLOBAL CLASSES
 
   class apiCall {
     constructor(inputValue) {
@@ -78,14 +89,6 @@ document.getElementById("allPokeList2").addEventListener("click", (event) => {
       fetchAndDisplayImage(url, this.disp)
     };
 
-    // getAllPokemon() {
-    //   fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1350')
-    //   .then(data => data.json())
-    //   .then(pokeArray => buildAllPokeList(pokeArray))
-    //   .then(output => displayAllPoke(output))
-    //   // .then(test => console.log(test))
-    // }
-
     getAllPokemon1() {
       fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1350')
       .then(data => data.json())
@@ -103,7 +106,8 @@ document.getElementById("allPokeList2").addEventListener("click", (event) => {
     }
   };
 
-// GLOBAL FUNCTIONS
+  // GLOBAL FUNCTIONS
+
 // fetches pokemon data from the API
 const getPokemon = (input, disp) => {
   clearInput(`name${disp}`);
@@ -160,16 +164,6 @@ const buildAllPokeList = (pokeArray) => {
     return allPoke;
 }
 
-// displays array of all pokemon
-// const displayAllPoke = (data) => {
-//   let output = '';
-//   let listContainer = document.getElementById('allPokeList');
-//   data.forEach(name => {
-//     output += `<li>${name}</li>`
-//   });
-//   listContainer.innerHTML = output;
-// };
-
 // creates elements passed in from param and looks at which display was used for search
 const displayPokeData = (tableData, disp) => {
   const pushStat1 = () => document.getElementById('stats1').innerHTML = tableData;
@@ -178,7 +172,7 @@ const displayPokeData = (tableData, disp) => {
     console.log(`Incorrect display referenced, call must be 1 or two. Called was: ${disp}`)
   } else if ( disp == 1 ) {
     pushStat1();
-  } else if ( disp ==2 ) {
+  } else if ( disp == 2 ) {
     pushStat2();
   }
 };
@@ -197,7 +191,7 @@ async function fetchAndDisplayImage(url, disp) {
     console.log(`Incorrect display referenced, call must be 1 or two. Called was: ${disp}`)
   } else if ( disp == 1 ) {
     displayUsed = img1;
-  } else if ( disp ==2 ) {
+  } else if ( disp == 2 ) {
     displayUsed = img2;
   }
 
@@ -211,33 +205,14 @@ async function fetchAndDisplayImage(url, disp) {
     const objectUrl = URL.createObjectURL(imageBlob);
 
     displayUsed.src = objectUrl;
+    displayUsed.style.boxShadow = '10px 10px 5px 10px rgba(0, 0, 0, 0.5)';
 
   } catch (error) {
     console.error('Error fetching image:', error);
   }
 }
 
-// PROBABLY BREAKING THINGS
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-
-function getDataValuedata(data) {
-  console.log(data)
-}
-
-
+// formats all pokemon into individual <a> elements and adds them allPokeList1
 const displayAllPoke1 = (data) => {
   let output = '';
   let listContainer = document.getElementById('allPokeList1');
@@ -247,6 +222,7 @@ const displayAllPoke1 = (data) => {
   listContainer.innerHTML = output;
 };
 
+// formats all pokemon into individual <a> elements and adds them allPokeList2
 const displayAllPoke2 = (data) => {
   let output = '';
   let listContainer = document.getElementById('allPokeList2');
@@ -255,3 +231,4 @@ const displayAllPoke2 = (data) => {
   });
   listContainer.innerHTML = output;
 };
+
