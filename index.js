@@ -25,9 +25,31 @@ button2.addEventListener("click", function() {
 });
 
 button3.addEventListener("click", function() {
+  document.getElementById("allPokeList1").classList.toggle("show");
   const getPokemonList = new pokeAPICall;
-  getPokemonList.getAllPokemon();
+  getPokemonList.getAllPokemon1();
 });
+
+button4.addEventListener("click", function() {
+  document.getElementById("allPokeList2").classList.toggle("show");
+  const getPokemonList = new pokeAPICall;
+  getPokemonList.getAllPokemon2();
+});
+
+document.getElementById("allPokeList1").addEventListener("click", (event) => {
+  document.getElementById('name1').value = event.target.id
+  console.log(event.target.id);
+});
+
+document.getElementById("allPokeList2").addEventListener("click", (event) => {
+  document.getElementById('name2').value = event.target.id
+  console.log(event.target.id);
+});
+
+// button3.addEventListener("click", function() {
+//   const getPokemonList = new pokeAPICall;
+//   getPokemonList.getAllPokemon();
+// });
 
 // GLOBAL CLASSES
 
@@ -56,11 +78,27 @@ button3.addEventListener("click", function() {
       fetchAndDisplayImage(url, this.disp)
     };
 
-    getAllPokemon() {
+    // getAllPokemon() {
+    //   fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1350')
+    //   .then(data => data.json())
+    //   .then(pokeArray => buildAllPokeList(pokeArray))
+    //   .then(output => displayAllPoke(output))
+    //   // .then(test => console.log(test))
+    // }
+
+    getAllPokemon1() {
       fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1350')
       .then(data => data.json())
       .then(pokeArray => buildAllPokeList(pokeArray))
-      .then(output => displayAllPoke(output))
+      .then(output => displayAllPoke1(output))
+      // .then(test => console.log(test))
+    }
+
+    getAllPokemon2() {
+      fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1350')
+      .then(data => data.json())
+      .then(pokeArray => buildAllPokeList(pokeArray))
+      .then(output => displayAllPoke2(output))
       // .then(test => console.log(test))
     }
   };
@@ -123,14 +161,14 @@ const buildAllPokeList = (pokeArray) => {
 }
 
 // displays array of all pokemon
-const displayAllPoke = (data) => {
-  let output = '';
-  let listContainer = document.getElementById('allPokeList');
-  data.forEach(name => {
-    output += `<li>${name}</li>`
-  });
-  listContainer.innerHTML = output;
-};
+// const displayAllPoke = (data) => {
+//   let output = '';
+//   let listContainer = document.getElementById('allPokeList');
+//   data.forEach(name => {
+//     output += `<li>${name}</li>`
+//   });
+//   listContainer.innerHTML = output;
+// };
 
 // creates elements passed in from param and looks at which display was used for search
 const displayPokeData = (tableData, disp) => {
@@ -178,3 +216,42 @@ async function fetchAndDisplayImage(url, disp) {
     console.error('Error fetching image:', error);
   }
 }
+
+// PROBABLY BREAKING THINGS
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+function getDataValuedata(data) {
+  console.log(data)
+}
+
+
+const displayAllPoke1 = (data) => {
+  let output = '';
+  let listContainer = document.getElementById('allPokeList1');
+  data.forEach(name => {
+    output += `<a id='${name}'>${name}</a>`
+  });
+  listContainer.innerHTML = output;
+};
+
+const displayAllPoke2 = (data) => {
+  let output = '';
+  let listContainer = document.getElementById('allPokeList2');
+  data.forEach(name => {
+    output += `<a id='${name}'>${name}</a>`
+  });
+  listContainer.innerHTML = output;
+};

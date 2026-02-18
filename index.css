@@ -11,21 +11,50 @@ h1 {
   border-color: #DBBE18;
 }
 
+h2 {
+  color: rgba(255, 255, 255, 0.884);
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.buttons {
+  border-radius: 4px;
+  background-color: #3498DB;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.buttons:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
 .displays {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2px;
   background-color: black;
   height: 100%;
+  border-radius: 8px;
+
 }
 
 .input {
   display: grid;
-  padding-left: 25%;
-  padding-right: 25%;
+  padding-left: 10%;
+  padding-right: 10%;
   padding-bottom: 25px;
-  grid-template-columns: minmax(50px, 150px) minmax(60px, 75px);
-  gap: 20px;
+  grid-template-columns: minmax(50px, 150px) minmax(140px, 180px) minmax(60px, 100px);
+  gap: 19%;
+}
+
+.inputBox {
+  border-radius: 5px;
+  color: rgb(24, 24, 24);
 }
 
 .display1 {
@@ -53,14 +82,11 @@ th, td {
 }
 
 .pokemonimg {
+  display: grid;
   margin-top: 25px;
+  place-items: center;
   border-radius: 28px;
   box-shadow: 10px 10px 5px 10px rgba(0, 0, 0, 0.5);
-}
-
-
-.allPokemon {
-  margin-top: 10px;
 }
 
 .allPokeList {
@@ -69,3 +95,45 @@ th, td {
   font-weight: bold;
   background-color: gray;
 }
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  height: 50%;
+  overflow: auto;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}

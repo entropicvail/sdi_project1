@@ -11,27 +11,33 @@
     <h1>Welcome to Poké Check</h1>
     <div class="displays">
       <div class='display1' id='display1'>
+        <h2>Poké Slot 1</h2>
         <div class="input">
-          <input id="name1" type='text' placeholder='Enter Pokemon name'>
-          <button id='button1' type='button'>Search</button>
+          <div id ='allPokemon' class='allPokemon'>
+            <button id='button3' class='dropbtn' type='button'>All Pokémon</button>
+            <div id='allPokeList1' class='dropdown-content'></div>
+          </div>
+          <input id="name1" class='inputBox' type='text' placeholder='Enter Pokemon name'>
+          <button id='button1' class='buttons' type='button'>Search</button>
         </div>
         <div class='stats' id='stats1'>
         </div>
         <img id='img1' class='pokemonimg' alt="">
       </div>
       <div class='display2' id='display2'>
+        <h2>Poké Slot 2</h2>
         <div class="input">
-          <input id="name2" type='text' placeholder='Enter Pokemon name'>
-          <button id='button2' type='button'>Search</button>
+          <div id ='allPokemon' class='allPokemon'>
+            <button id='button4' class='dropbtn' type='button'>All Pokémon</button>
+            <div id='allPokeList2' class='dropdown-content'></div>
+          </div>
+          <input id="name2" class='inputBox' type='text' placeholder='Enter Pokemon name'>
+          <button id='button2' class='buttons' type='button'>Search</button>
         </div>
         <div class='stats' id='stats2'>
         </div>
         <img id='img2' class='pokemonimg' alt="">
       </div>
     </div>
-      <div id ='allPokemon' class='allPokemon'>
-          <button id='button3' type='button'>List All Pokémon</button>
-          <ul id='allPokeList' class='allPokeList'></ul>
-      </div>
   </body>
 </html>
