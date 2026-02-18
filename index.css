@@ -9,13 +9,6 @@ h1 {
   font-family: serif;
   border-style: groove;
   border-color: #DBBE18;
-
-    .headImag {
-    background-image: url("./img/Toxtricity-PNG.png");
-    background-repeat: no-repeat;
-    background-position: left;
-    height: 720px;
-  }
 }
 
 .displays {
@@ -45,12 +38,6 @@ h1 {
   padding: 1em;
 }
 
-.todo {
-  color: white;
-  font-weight: bold;
-  font-size: 22px;
-}
-
 .table {
   color: rgb(241, 239, 239);
   border: 1px solid white;
@@ -69,4 +56,16 @@ th, td {
   margin-top: 25px;
   border-radius: 28px;
   box-shadow: 10px 10px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.allPokemon {
+  margin-top: 10px;
+}
+
+.allPokeList {
+  margin-top: 10px;
+  color: rgb(241, 239, 239);
+  font-weight: bold;
+  background-color: gray;
 }

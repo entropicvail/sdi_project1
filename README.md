@@ -22,9 +22,9 @@ npm -v
 ```
 npm i -y
 ```
-7. Insatll live-server.
+7. Insatll live-server (you may need to use admin privilages).
 ```
-npm i live-server
+npm install -g live-server
 ```
 8. From inside the cloned directory, start live server.
 ```

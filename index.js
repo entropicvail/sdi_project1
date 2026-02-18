@@ -1,5 +1,3 @@
-// import { apiCall, pokeAPICall } from './src/classes.js'
-
 // GLOBAL ELEMENTS
 const userInput1 = document.getElementById('name1');
 const button1 = document.getElementById('button1');
@@ -8,6 +6,8 @@ const Img1 = document.getElementById('img1');
 const userInput2 = document.getElementById('name2');
 const button2 = document.getElementById('button2');
 const Img2 = document.getElementById('img2');
+
+const button3 = document.getElementById('button3');
 
 // GLOBAL LISTENERS
 // returns console mesage if empy, returns userInput1.value
@@ -22,6 +22,11 @@ button2.addEventListener("click", function() {
   const emptyErrorMsg = 'userInput2 must input Pokemon name';
   const inputValue = userInput2.value.trim()
   userInput2.value.toString() == '' ? alert(emptyErrorMsg) : getPokemon(inputValue, 2)
+});
+
+button3.addEventListener("click", function() {
+  const getPokemonList = new pokeAPICall;
+  getPokemonList.getAllPokemon();
 });
 
 // GLOBAL CLASSES
@@ -50,6 +55,14 @@ button2.addEventListener("click", function() {
       .then(stats => displayPokeData(stats, this.disp))
       fetchAndDisplayImage(url, this.disp)
     };
+
+    getAllPokemon() {
+      fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1350')
+      .then(data => data.json())
+      .then(pokeArray => buildAllPokeList(pokeArray))
+      .then(output => displayAllPoke(output))
+      // .then(test => console.log(test))
+    }
   };
 
 // GLOBAL FUNCTIONS
@@ -102,6 +115,22 @@ const buildPokemonDisp = (pokeObj) => {
   return dispTable
 };
 
+// gets names of all pokemon in API and returns as an array
+const buildAllPokeList = (pokeArray) => {
+  let allPoke = [];
+    Object.values(pokeArray.results).forEach(value => allPoke.push(value.name));
+    return allPoke;
+}
+
+// displays array of all pokemon
+const displayAllPoke = (data) => {
+  let output = '';
+  let listContainer = document.getElementById('allPokeList');
+  data.forEach(name => {
+    output += `<li>${name}</li>`
+  });
+  listContainer.innerHTML = output;
+};
 
 // creates elements passed in from param and looks at which display was used for search
 const displayPokeData = (tableData, disp) => {
